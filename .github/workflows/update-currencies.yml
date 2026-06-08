@@ -1,0 +1,27 @@
+name: Update currencies
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # weekly, Monday 06:17 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate currencies.json
+        run: python3 scripts/update_currencies.py
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain assets/currencies.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add assets/currencies.json
+            git commit -m "chore: refresh currencies.json"
+            git push
+          else
+            echo "No change."
+          fi
