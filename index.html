@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sip — Wine Cellar &amp; Tasting Journal</title>
   <meta name="description" content="Sip is a personal wine cellar and tasting journal for iPhone.">
+  <link rel="icon" href="images/app-icon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <style>
     :root { --ground:#14110e; --surface:#1d1813; --ink:#f3ece1; --faint:#a99c87; --gold:#c8a96a; --hairline:#352c22; }
     * { box-sizing: border-box; }
@@ -16,6 +18,10 @@
       padding: 24px; -webkit-font-smoothing: antialiased;
     }
     main { max-width: 32rem; }
+    img.icon {
+      width: 116px; height: 116px; border-radius: 26px; margin: 0 0 1.5rem;
+      box-shadow: 0 10px 34px rgba(0,0,0,.55); border: 1px solid var(--hairline);
+    }
     h1 { font-size: 3.5rem; font-weight: 600; margin: 0 0 .25rem; letter-spacing: -0.01em; }
     p.tagline { color: var(--faint); font-size: 1.15rem; margin: 0 0 2rem; }
     a.button {
@@ -29,6 +35,7 @@
 </head>
 <body>
   <main>
+    <img class="icon" src="images/app-icon.png" alt="Sip app icon" width="116" height="116">
     <h1>Sip</h1>
     <p class="tagline">Your personal wine cellar and tasting journal.</p>
     <a class="button" href="https://apps.apple.com/app/id6444360091">Download on the App&nbsp;Store</a>
