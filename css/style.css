@@ -1,0 +1,268 @@
+/* Sip landing page. Editorial palette mirrors the app's design system
+   (Core/UI/DesignSystem/Theme.swift): charcoal cellar-at-night by default,
+   warm cream paper in light mode. System serif so iPhones render New York,
+   the same face as the app. */
+
+:root {
+  --ground-top: #1C1417;
+  --ground-bottom: #0A0809;
+  --ink: #F2EDE3;
+  --faint: rgba(242, 237, 227, 0.55);
+  --gold: #CFAB6E;
+  --on-gold: #1a140c;
+  --card: #221B1E;
+  --hairline: #3D3438;
+  --shadow: rgba(0, 0, 0, 0.55);
+}
+
+html.light {
+  --ground-top: #FDFAF5;
+  --ground-bottom: #F2EDE6;
+  --ink: #211C1A;
+  --faint: rgba(33, 28, 26, 0.55);
+  --gold: #A8803D;
+  --on-gold: #FDFAF5;
+  --card: #FFFFFF;
+  --hairline: #DDD5C8;
+  --shadow: rgba(60, 45, 30, 0.18);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  /* No `fixed`: it doesn't paint past the first viewport in some renderers
+     and iOS Safari ignores it. The gradient spans the document instead. */
+  background-color: var(--ground-bottom);
+  background-image: linear-gradient(var(--ground-top), var(--ground-bottom));
+  color: var(--ink);
+  font-family: ui-serif, "New York", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+a { color: var(--gold); text-decoration: none; }
+
+/* ---------- Header ---------- */
+
+.header {
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--ground-top) 80%, transparent);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+
+.wordmark {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--ink); font-weight: 600; font-size: 1.05rem;
+  letter-spacing: 0.35em; text-transform: uppercase;
+}
+
+.wordmark img { width: 32px; height: 32px; border-radius: 8px; }
+
+.header nav { display: flex; align-items: center; gap: 26px; }
+
+.header nav a {
+  color: var(--faint); font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.header nav a:hover { color: var(--gold); }
+
+.theme-toggle {
+  background: none; border: 1px solid var(--hairline); border-radius: 999px;
+  width: 34px; height: 34px; cursor: pointer; color: var(--faint);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+.theme-toggle svg { width: 16px; height: 16px; }
+.theme-toggle .sun { display: none; }
+html.light .theme-toggle .sun { display: block; }
+html.light .theme-toggle .moon { display: none; }
+
+/* ---------- Hero ---------- */
+
+.hero { text-align: center; padding: 88px 0 40px; }
+
+.hero .app-icon {
+  width: 108px; height: 108px; border-radius: 24px;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 12px 40px var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 600; line-height: 1.12; letter-spacing: -0.01em;
+}
+
+.hero h1 em { font-style: italic; color: var(--gold); }
+
+.hero .lede {
+  color: var(--faint); font-size: 1.2rem; max-width: 34rem;
+  margin: 1.4rem auto 2.4rem;
+}
+
+.store-button {
+  display: inline-block;
+  background: var(--gold); color: var(--on-gold);
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600; font-size: 1.05rem;
+  padding: 0.9rem 1.8rem; border-radius: 999px;
+}
+
+.store-button:hover { filter: brightness(1.06); }
+
+.hero .free-note {
+  color: var(--faint); font-size: 0.9rem; margin-top: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.hero-shot { margin-top: 56px; }
+
+/* ---------- Screenshots ---------- */
+
+.shot {
+  display: block; width: 100%; height: auto;
+  border-radius: 36px;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 24px 70px var(--shadow);
+}
+
+.hero-shot .shot { max-width: 360px; margin: 0 auto; }
+
+/* ---------- Feature rows ---------- */
+
+.features { padding: 50px 0 10px; }
+
+.feature {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+  padding: 64px 0;
+}
+
+.feature:nth-child(even) .feature__media { order: -1; }
+
+.feature__media .shot { max-width: 330px; margin: 0 auto; }
+
+.eyebrow {
+  color: var(--gold); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  margin-bottom: 0.9rem;
+}
+
+.feature h2 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 600; line-height: 1.18; margin-bottom: 1rem;
+}
+
+.feature p { color: var(--faint); max-width: 30rem; }
+
+.feature ul {
+  list-style: none; margin-top: 1.4rem;
+  color: var(--faint); font-size: 0.98rem;
+}
+
+.feature li {
+  padding-left: 1.4rem; position: relative; margin-bottom: 0.55rem;
+}
+
+.feature li::before {
+  content: ""; position: absolute; left: 0; top: 0.62em;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---------- Duo band (open a bottle) ---------- */
+
+.band {
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--card) 55%, transparent);
+  padding: 80px 0; text-align: center;
+}
+
+.band h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 600; }
+
+.band .band-sub { color: var(--faint); margin: 0.8rem auto 3rem; max-width: 30rem; }
+
+.duo {
+  display: flex; justify-content: center; align-items: flex-start;
+  gap: 28px; flex-wrap: wrap;
+}
+
+.duo .shot { max-width: 280px; }
+
+.duo .shot:last-child { margin-top: 48px; }
+
+/* ---------- Premium ---------- */
+
+.premium { text-align: center; padding: 96px 0; }
+
+.premium h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; }
+
+.premium h2 em { font-style: italic; color: var(--gold); }
+
+.chips {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px; margin: 2.4rem auto; max-width: 38rem;
+}
+
+.chip {
+  border: 1px solid var(--hairline); border-radius: 999px;
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  padding: 0.6rem 1.2rem; font-size: 0.95rem; color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.chip strong { color: var(--gold); font-weight: 600; }
+
+.premium .price-note { color: var(--faint); max-width: 30rem; margin: 0 auto 2.2rem; }
+
+/* ---------- Footer ---------- */
+
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding: 44px 0 60px; text-align: center;
+  color: var(--faint); font-size: 0.9rem;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.footer a { color: var(--faint); }
+.footer a:hover { color: var(--gold); }
+.footer .footer-links { margin-bottom: 0.8rem; }
+.footer .footer-links a { margin: 0 0.7rem; }
+
+/* ---------- Reveal on scroll ---------- */
+
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 760px) {
+  .header nav a:not(.store-link) { display: none; }
+  .feature { grid-template-columns: 1fr; gap: 40px; padding: 48px 0; text-align: center; }
+  .feature:nth-child(even) .feature__media { order: 0; }
+  .feature p, .feature ul { margin-left: auto; margin-right: auto; }
+  .feature li { text-align: left; }
+  .duo .shot:last-child { margin-top: 0; }
+}
