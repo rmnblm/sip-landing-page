@@ -3,215 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sip, your cellar, beautifully kept.</title>
-  <meta name="description" content="Sip is the wine cellar and tasting journal for iPhone and iPad. Track every bottle, open one in two taps, and keep the memory in a journal that reads like a magazine.">
-  <meta property="og:title" content="Sip, your cellar, beautifully kept.">
-  <meta property="og:description" content="The wine cellar and tasting journal for iPhone and iPad.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://rmnblm.github.io/sip-landing-page/images/app-icon-1024.png">
+  <title>Sip — Wine Cellar &amp; Tasting Journal</title>
+  <meta name="description" content="Sip is a personal wine cellar and tasting journal for iPhone and iPad. Track every bottle. Remember every glass.">
   <meta name="apple-itunes-app" content="app-id=6444360091">
   <link rel="icon" href="images/app-icon.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root { --ground:#14110e; --ink:#f3ece1; --faint:#a99c87; --gold:#c8a96a; --hairline:#352c22; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      background: var(--ground); color: var(--ink);
+      font-family: ui-serif, "New York", Georgia, serif;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 24px; -webkit-font-smoothing: antialiased;
+    }
+    main { max-width: 32rem; }
+    img.icon {
+      width: 116px; height: 116px; border-radius: 26px; margin: 0 0 1.5rem;
+      box-shadow: 0 10px 34px rgba(0,0,0,.55); border: 1px solid var(--hairline);
+    }
+    h1 { font-size: 3.5rem; font-weight: 600; margin: 0 0 .25rem; letter-spacing: -0.01em; }
+    p.tagline { color: var(--faint); font-size: 1.15rem; font-style: italic; margin: 0 0 2rem; }
+    a.button {
+      display: inline-block; text-decoration: none;
+      background: var(--gold); color: #1a140c; font-weight: 600;
+      padding: 0.85rem 1.6rem; border-radius: 999px; font-size: 1.05rem;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+    footer { margin-top: 2.5rem; color: var(--faint); font-size: 0.9rem; }
+    footer a { color: var(--faint); }
+  </style>
 </head>
 <body>
-
-  <!-- Spread one: masthead + hero, charcoal -->
-  <section class="s-dark">
-    <header class="masthead">
-      <div class="container">
-        <div class="rule"></div>
-        <div class="plate">
-          <span class="issue">Cellar &amp; Tasting Journal</span>
-          <a class="name" href="#">Sip<span class="dot">.</span></a>
-          <a class="get" href="https://apps.apple.com/app/id6444360091">Get the app</a>
-        </div>
-        <div class="rule"></div>
-      </div>
-    </header>
-
-    <div class="hero">
-      <div class="container">
-        <p class="kicker">For people who would rather drink wine than maintain a spreadsheet</p>
-        <h1>Your cellar,<br><em>beautifully</em> kept.</h1>
-        <p class="lede">Track every bottle. Remember every glass.</p>
-        <a class="store-button" href="https://apps.apple.com/app/id6444360091">Download on the App&nbsp;Store</a>
-        <p class="free-note">Free up to 20 bottles and 20 tastings &middot; iPhone &amp; iPad</p>
-        <div class="device">
-          <img class="shot" src="images/screens/home-dark.png" alt="The Sip home screen: your cellar, journal, and insights on one canvas." width="1100" height="2390">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Spread two: numbers + the cellar, cream -->
-  <section class="s-cream">
-    <div class="numbers">
-      <div class="container">
-        <div class="grid reveal">
-          <div>
-            <div class="figure"><em>2</em> taps</div>
-            <div class="label">to open a bottle</div>
-          </div>
-          <div>
-            <div class="figure"><em>1,600</em>+</div>
-            <div class="label">grape varieties</div>
-          </div>
-          <div>
-            <div class="figure"><em>0</em></div>
-            <div class="label">ads, feeds, sign-ups</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="chapter reveal">
-      <div class="container">
-        <div class="chapter__copy">
-          <p class="kicker">The Cellar</p>
-          <h2>Every bottle,<br>every format.</h2>
-          <p class="lead">Sip keeps the ledger so you don't have to: what you bought, where, for how much, and which bottles are still resting downstairs. Your stock by size, with store and price, at a glance.</p>
-          <div class="carte">
-            <div class="carte-row"><span>Multiple cellars</span><span class="dots"></span><span class="value">name &amp; symbol</span></div>
-            <div class="carte-row"><span>Drinking windows</span><span class="dots"></span><span class="value">what's ready tonight</span></div>
-            <div class="carte-row"><span>Opened &amp; preserved</span><span class="dots"></span><span class="value">Coravin-friendly</span></div>
-            <div class="carte-row"><span>Deliveries &amp; history</span><span class="dots"></span><span class="value">every movement</span></div>
-          </div>
-        </div>
-        <div class="chapter__media">
-          <div class="device tilt-r">
-            <img class="shot" src="images/screens/wine-detail.png" alt="A wine page in Sip showing stock by format, prices, and activity." width="1100" height="2390" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Spread three: open a bottle, charcoal -->
-  <section class="s-dark">
-    <div class="duo-band reveal">
-      <div class="container">
-        <h2>Open a bottle in <em>two taps.</em></h2>
-        <p class="band-sub">The inventory updates. The journal remembers.</p>
-        <div class="duo">
-          <div class="device">
-            <img class="shot" src="images/screens/open-list.png" alt="The open-a-bottle list in Sip." width="1100" height="2390" loading="lazy">
-          </div>
-          <div class="device">
-            <img class="shot" src="images/screens/remove-sheet.png" alt="Opening a bottle in Sip, with an optional Coravin preserve." width="1100" height="2390" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Spread four: the journal, cream -->
-  <section class="s-cream">
-    <div class="chapter media-left reveal">
-      <div class="container">
-        <div class="chapter__copy">
-          <p class="kicker">The Journal</p>
-          <h2>A journal that<br><em>remembers the night.</em></h2>
-          <p class="lead">Photos first: a memory wall of everything you've tasted, and every entry a magazine-style spread with full-bleed photos, notes, ratings, and place. Log wines you don't own, too. A great bottle at a restaurant belongs in your journal.</p>
-          <div class="carte">
-            <div class="carte-row"><span>Tags</span><span class="dots"></span><span class="value">trips, dinners, blind flights</span></div>
-            <div class="carte-row"><span>Ratings</span><span class="dots"></span><span class="value">stars, /20, or /100</span></div>
-            <div class="carte-row"><span>Places</span><span class="dots"></span><span class="value">where you drank it</span></div>
-          </div>
-        </div>
-        <div class="chapter__media">
-          <div class="device tilt-l">
-            <img class="shot" src="images/screens/tasting-detail.png" alt="A tasting in Sip, presented like a magazine spread with a full-bleed photo." width="1100" height="2390" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pull quote, charcoal -->
-  <section class="s-dark">
-    <div class="pull reveal">
-      <div class="container">
-        <blockquote>
-          <span class="q">&ldquo;</span>Mouth-coating creamy bubbles and a long finish. Wow!<span class="q">&rdquo;</span>
-        </blockquote>
-        <cite>A note from the journal &middot; Roses de Jeanne, 2017</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- Spread five: insights, cream -->
-  <section class="s-cream">
-    <div class="chapter reveal">
-      <div class="container">
-        <div class="chapter__copy">
-          <p class="kicker">The Insights</p>
-          <h2>Know your cellar.</h2>
-          <p class="lead">What you drink, what it costs, what's ready tonight. Reports on consumption, composition, regions, and value, drawn from your own ledger and presented like the back pages of a good wine magazine.</p>
-          <div class="carte">
-            <div class="carte-row"><span>Collection value</span><span class="dots"></span><span class="value">over time</span></div>
-            <div class="carte-row"><span>Spreadsheets</span><span class="dots"></span><span class="value">import &amp; export</span></div>
-            <div class="carte-row"><span>iCloud sync</span><span class="dots"></span><span class="value">iPhone &amp; iPad</span></div>
-          </div>
-        </div>
-        <div class="chapter__media">
-          <div class="device tilt-r">
-            <img class="shot" src="images/screens/insights.png" alt="The Sip reports dashboard: collection value, composition, and drinking windows." width="1100" height="2390" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- La carte: premium, charcoal -->
-  <section class="s-dark" id="premium">
-    <div class="premium reveal">
-      <div class="container">
-        <div class="menu-card">
-          <p class="kicker">La Carte</p>
-          <h2>Sip <em>Premium.</em></h2>
-          <div class="carte">
-            <div class="carte-row"><span>Bottles</span><span class="dots"></span><span class="value">unlimited</span></div>
-            <div class="carte-row"><span>Tastings</span><span class="dots"></span><span class="value">unlimited</span></div>
-            <div class="carte-row"><span>Subscription</span><span class="dots"></span><span class="value">monthly or annual</span></div>
-            <div class="carte-row"><span>Lifetime</span><span class="dots"></span><span class="value">pay once</span></div>
-            <div class="carte-row"><span>Ads</span><span class="dots"></span><span class="value">none</span></div>
-            <div class="carte-row"><span>Sign-up</span><span class="dots"></span><span class="value">never</span></div>
-          </div>
-          <p class="price-note">Free up to 20 bottles and 20 tastings, for as long as you like.</p>
-          <a class="store-button" href="https://apps.apple.com/app/id6444360091">Get Sip</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Colophon -->
-  <footer class="s-dark colophon">
-    <div class="container">
-      <div class="sante">Santé.</div>
-      <p class="sig">Made by one person who would rather be drinking the inventory.</p>
-      <div class="rule"></div>
-      <div class="links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="mailto:sip.app@icloud.com">Support</a>
-      </div>
-      <p class="copyright">&copy; 2026 Roman Blum</p>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-    })();
-  </script>
+  <main>
+    <img class="icon" src="images/app-icon.png" alt="Sip app icon" width="116" height="116">
+    <h1>Sip</h1>
+    <p class="tagline">Track every bottle. Remember every glass.</p>
+    <a class="button" href="https://apps.apple.com/app/id6444360091">Download on the App&nbsp;Store</a>
+    <footer>
+      <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a>
+    </footer>
+  </main>
 </body>
 </html>
