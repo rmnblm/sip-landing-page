@@ -1,30 +1,26 @@
-/* Sip landing page. Editorial palette mirrors the app's design system
-   (Core/UI/DesignSystem/Theme.swift): charcoal cellar-at-night by default,
-   warm cream paper in light mode. System serif so iPhones render New York,
-   the same face as the app. */
+/* Sip landing page. Set like a wine magazine, not a SaaS template: a masthead,
+   drop caps, dot-leader "wine list" rows, tilted devices, and fixed alternating
+   charcoal/cream spreads (the page is "printed", it has no theme toggle).
+   Palette mirrors the app's design system (Core/UI/DesignSystem/Theme.swift).
+   System serif so Apple devices render New York, the same face as the app. */
 
 :root {
-  --ground-top: #1C1417;
-  --ground-bottom: #0A0809;
-  --ink: #F2EDE3;
-  --faint: rgba(242, 237, 227, 0.55);
-  --gold: #CFAB6E;
-  --on-gold: #1a140c;
-  --card: #221B1E;
-  --hairline: #3D3438;
-  --shadow: rgba(0, 0, 0, 0.55);
-}
+  --dark-top: #1C1417;
+  --dark-bottom: #0A0809;
+  --dark-ink: #F2EDE3;
+  --dark-faint: rgba(242, 237, 227, 0.55);
+  --dark-gold: #CFAB6E;
+  --dark-hairline: #3D3438;
 
-html.light {
-  --ground-top: #FDFAF5;
-  --ground-bottom: #F2EDE6;
-  --ink: #211C1A;
-  --faint: rgba(33, 28, 26, 0.55);
-  --gold: #A8803D;
-  --on-gold: #FDFAF5;
-  --card: #FFFFFF;
-  --hairline: #DDD5C8;
-  --shadow: rgba(60, 45, 30, 0.18);
+  --cream-top: #FDFAF5;
+  --cream-bottom: #F2EDE6;
+  --cream-ink: #211C1A;
+  --cream-faint: rgba(33, 28, 26, 0.55);
+  --cream-gold: #A8803D;
+  --cream-hairline: #DDD5C8;
+
+  --serif: ui-serif, "New York", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,222 +28,298 @@ html.light {
 html { scroll-behavior: smooth; }
 
 body {
-  /* No `fixed`: it doesn't paint past the first viewport in some renderers
-     and iOS Safari ignores it. The gradient spans the document instead. */
-  background-color: var(--ground-bottom);
-  background-image: linear-gradient(var(--ground-top), var(--ground-bottom));
-  color: var(--ink);
-  font-family: ui-serif, "New York", Georgia, serif;
+  background: var(--dark-bottom);
+  color: var(--dark-ink);
+  font-family: var(--serif);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
 }
 
-.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.container { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
 
-a { color: var(--gold); text-decoration: none; }
+a { color: inherit; }
 
-/* ---------- Header ---------- */
+img { display: block; }
 
-.header {
-  position: sticky; top: 0; z-index: 100;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--ground-top) 80%, transparent);
-  border-bottom: 1px solid var(--hairline);
+/* Spreads: each section is either charcoal or cream, like facing pages. */
+
+.s-dark {
+  background: linear-gradient(var(--dark-top), var(--dark-bottom));
+  color: var(--dark-ink);
+  --ink: var(--dark-ink); --faint: var(--dark-faint);
+  --gold: var(--dark-gold); --hairline: var(--dark-hairline);
+  --on-gold: #1a140c;
 }
 
-.header .container {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 64px;
+.s-cream {
+  background: linear-gradient(var(--cream-top), var(--cream-bottom));
+  color: var(--cream-ink);
+  --ink: var(--cream-ink); --faint: var(--cream-faint);
+  --gold: var(--cream-gold); --hairline: var(--cream-hairline);
+  --on-gold: #FDFAF5;
 }
 
-.wordmark {
-  display: flex; align-items: center; gap: 12px;
-  color: var(--ink); font-weight: 600; font-size: 1.05rem;
-  letter-spacing: 0.35em; text-transform: uppercase;
+/* ---------- Masthead ---------- */
+
+.masthead { padding: 34px 0 0; }
+
+.masthead .rule { border-top: 1px solid var(--hairline); }
+
+.masthead .plate {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 14px 0;
 }
 
-.wordmark img { width: 32px; height: 32px; border-radius: 8px; }
-
-.header nav { display: flex; align-items: center; gap: 26px; }
-
-.header nav a {
-  color: var(--faint); font-size: 0.95rem;
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+.masthead .name {
+  font-size: 1.5rem; font-weight: 700;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  text-decoration: none;
 }
 
-.header nav a:hover { color: var(--gold); }
+.masthead .name .dot { color: var(--gold); }
 
-.theme-toggle {
-  background: none; border: 1px solid var(--hairline); border-radius: 999px;
-  width: 34px; height: 34px; cursor: pointer; color: var(--faint);
-  display: inline-flex; align-items: center; justify-content: center;
+.masthead .issue,
+.masthead .get {
+  font-family: var(--sans); font-size: 0.78rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--faint); text-decoration: none;
 }
 
-.theme-toggle svg { width: 16px; height: 16px; }
-.theme-toggle .sun { display: none; }
-html.light .theme-toggle .sun { display: block; }
-html.light .theme-toggle .moon { display: none; }
+.masthead .get { color: var(--gold); }
 
 /* ---------- Hero ---------- */
 
-.hero { text-align: center; padding: 88px 0 40px; }
+.hero { text-align: center; padding: 72px 0 0; overflow: visible; }
 
-.hero .app-icon {
-  width: 108px; height: 108px; border-radius: 24px;
-  border: 1px solid var(--hairline);
-  box-shadow: 0 12px 40px var(--shadow);
-  margin-bottom: 2rem;
+.kicker {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold);
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 7vw, 4.4rem);
-  font-weight: 600; line-height: 1.12; letter-spacing: -0.01em;
+  font-size: clamp(3rem, 9vw, 5.6rem);
+  font-weight: 600; line-height: 1.06; letter-spacing: -0.015em;
+  margin: 1.6rem 0 0;
 }
 
-.hero h1 em { font-style: italic; color: var(--gold); }
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
 
 .hero .lede {
-  color: var(--faint); font-size: 1.2rem; max-width: 34rem;
-  margin: 1.4rem auto 2.4rem;
+  color: var(--faint); font-size: 1.25rem; font-style: italic;
+  max-width: 30rem; margin: 1.6rem auto 2.6rem;
 }
 
 .store-button {
-  display: inline-block;
+  display: inline-block; text-decoration: none;
   background: var(--gold); color: var(--on-gold);
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-weight: 600; font-size: 1.05rem;
-  padding: 0.9rem 1.8rem; border-radius: 999px;
+  font-family: var(--sans); font-weight: 600; font-size: 1rem;
+  padding: 0.95rem 2rem; border-radius: 999px;
 }
 
-.store-button:hover { filter: brightness(1.06); }
+.store-button:hover { filter: brightness(1.07); }
 
-.hero .free-note {
-  color: var(--faint); font-size: 0.9rem; margin-top: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+.free-note {
+  font-family: var(--sans); font-size: 0.85rem;
+  color: var(--faint); margin-top: 1.1rem;
 }
 
-.hero-shot { margin-top: 56px; }
-
-/* ---------- Screenshots ---------- */
+/* The hero phone leans into the next spread. */
+.hero .device {
+  width: min(360px, 78vw); margin: 64px auto -150px;
+  position: relative; z-index: 5;
+  transform: rotate(-2deg);
+}
 
 .shot {
-  display: block; width: 100%; height: auto;
-  border-radius: 36px;
+  width: 100%; height: auto;
+  border-radius: 34px;
   border: 1px solid var(--hairline);
-  box-shadow: 0 24px 70px var(--shadow);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
-.hero-shot .shot { max-width: 360px; margin: 0 auto; }
+.s-cream .shot { box-shadow: 0 24px 60px rgba(60, 45, 30, 0.28); }
 
-/* ---------- Feature rows ---------- */
+/* ---------- Numbers strip ---------- */
 
-.features { padding: 50px 0 10px; }
+.numbers { padding: 230px 0 70px; }
 
-.feature {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 64px; align-items: center;
-  padding: 64px 0;
+.numbers .grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 32px; text-align: center;
 }
 
-.feature:nth-child(even) .feature__media { order: -1; }
+.numbers .figure {
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 600; line-height: 1; letter-spacing: -0.01em;
+}
 
-.feature__media .shot { max-width: 330px; margin: 0 auto; }
+.numbers .figure em { color: var(--gold); font-style: normal; }
 
-.eyebrow {
-  color: var(--gold); font-size: 0.78rem; font-weight: 600;
+.numbers .label {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  margin-bottom: 0.9rem;
+  color: var(--faint); margin-top: 0.9rem;
 }
 
-.feature h2 {
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  font-weight: 600; line-height: 1.18; margin-bottom: 1rem;
+/* ---------- Chapters ---------- */
+
+.chapter { padding: 96px 0; }
+
+.chapter .container {
+  display: grid; grid-template-columns: 7fr 5fr;
+  gap: 72px; align-items: center;
 }
 
-.feature p { color: var(--faint); max-width: 30rem; }
+.chapter.media-left .container { grid-template-columns: 5fr 7fr; }
+.chapter.media-left .chapter__media { order: -1; }
 
-.feature ul {
-  list-style: none; margin-top: 1.4rem;
-  color: var(--faint); font-size: 0.98rem;
+.chapter h2 {
+  font-size: clamp(2.1rem, 5vw, 3.1rem);
+  font-weight: 600; line-height: 1.12; letter-spacing: -0.01em;
+  margin: 1rem 0 1.4rem;
 }
 
-.feature li {
-  padding-left: 1.4rem; position: relative; margin-bottom: 0.55rem;
+.chapter h2 em { font-style: italic; color: var(--gold); font-weight: 500; }
+
+.chapter .lead { color: var(--faint); font-size: 1.08rem; }
+
+.chapter .lead::first-letter {
+  float: left; font-size: 3.3em; line-height: 0.82;
+  padding: 0.06em 0.12em 0 0;
+  color: var(--gold); font-style: italic;
 }
 
-.feature li::before {
-  content: ""; position: absolute; left: 0; top: 0.62em;
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--gold);
+.chapter__media .device { width: min(330px, 80vw); margin: 0 auto; }
+.chapter__media .tilt-l { transform: rotate(-1.8deg); }
+.chapter__media .tilt-r { transform: rotate(1.8deg); }
+
+/* Dot-leader rows, like a wine list. */
+.carte { margin-top: 2rem; }
+
+.carte-row {
+  display: flex; align-items: baseline; gap: 12px;
+  font-size: 1rem; margin-bottom: 0.85rem;
 }
 
-/* ---------- Duo band (open a bottle) ---------- */
-
-.band {
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  background: color-mix(in srgb, var(--card) 55%, transparent);
-  padding: 80px 0; text-align: center;
+.carte-row .dots {
+  flex: 1; min-width: 2rem;
+  border-bottom: 1px dotted var(--faint);
+  transform: translateY(-0.3em);
+  opacity: 0.6;
 }
 
-.band h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 600; }
+.carte-row .value {
+  color: var(--gold); font-style: italic; white-space: nowrap;
+}
 
-.band .band-sub { color: var(--faint); margin: 0.8rem auto 3rem; max-width: 30rem; }
+/* ---------- Pull quote ---------- */
+
+.pull { padding: 110px 0; text-align: center; }
+
+.pull blockquote {
+  font-size: clamp(1.7rem, 4.5vw, 2.7rem);
+  font-style: italic; font-weight: 500; line-height: 1.3;
+  max-width: 46rem; margin: 0 auto;
+}
+
+.pull blockquote .q { color: var(--gold); }
+
+.pull cite {
+  display: block; font-style: normal; margin-top: 1.6rem;
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ---------- Duo band ---------- */
+
+.duo-band { padding: 96px 0 110px; text-align: center; }
+
+.duo-band h2 {
+  font-size: clamp(2.1rem, 5vw, 3.1rem); font-weight: 600;
+  line-height: 1.12;
+}
+
+.duo-band .band-sub {
+  color: var(--faint); font-style: italic; font-size: 1.15rem;
+  margin: 0.9rem auto 3.4rem;
+}
 
 .duo {
   display: flex; justify-content: center; align-items: flex-start;
-  gap: 28px; flex-wrap: wrap;
+  gap: 36px; flex-wrap: wrap;
 }
 
-.duo .shot { max-width: 280px; }
+.duo .device { width: min(280px, 70vw); }
+.duo .device:first-child { transform: rotate(-2.2deg); }
+.duo .device:last-child { transform: rotate(1.8deg); margin-top: 56px; }
 
-.duo .shot:last-child { margin-top: 48px; }
+/* ---------- La carte (premium) ---------- */
 
-/* ---------- Premium ---------- */
+.premium { padding: 110px 0 120px; }
 
-.premium { text-align: center; padding: 96px 0; }
-
-.premium h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; }
-
-.premium h2 em { font-style: italic; color: var(--gold); }
-
-.chips {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: 12px; margin: 2.4rem auto; max-width: 38rem;
+.menu-card {
+  max-width: 30rem; margin: 0 auto; text-align: center;
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--hairline); outline-offset: 6px;
+  padding: 3.2rem 2.6rem 2.8rem;
 }
 
-.chip {
-  border: 1px solid var(--hairline); border-radius: 999px;
-  background: color-mix(in srgb, var(--card) 70%, transparent);
-  padding: 0.6rem 1.2rem; font-size: 0.95rem; color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+.menu-card .kicker { margin-bottom: 0.7rem; }
+
+.menu-card h2 {
+  font-size: 2.3rem; font-weight: 600; margin-bottom: 2rem;
 }
 
-.chip strong { color: var(--gold); font-weight: 600; }
+.menu-card h2 em { font-style: italic; color: var(--gold); font-weight: 500; }
 
-.premium .price-note { color: var(--faint); max-width: 30rem; margin: 0 auto 2.2rem; }
+.menu-card .carte { text-align: left; margin: 0 0 2.2rem; }
 
-/* ---------- Footer ---------- */
+.menu-card .price-note {
+  color: var(--faint); font-size: 0.95rem; font-style: italic;
+  margin-bottom: 2rem;
+}
 
-.footer {
+/* ---------- Colophon ---------- */
+
+.colophon { padding: 90px 0 70px; text-align: center; }
+
+.colophon .sante {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-style: italic; font-weight: 500; color: var(--gold);
+}
+
+.colophon .sig {
+  color: var(--faint); font-style: italic; margin-top: 0.4rem;
+}
+
+.colophon .rule {
   border-top: 1px solid var(--hairline);
-  padding: 44px 0 60px; text-align: center;
-  color: var(--faint); font-size: 0.9rem;
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  max-width: 200px; margin: 2.6rem auto;
 }
 
-.footer a { color: var(--faint); }
-.footer a:hover { color: var(--gold); }
-.footer .footer-links { margin-bottom: 0.8rem; }
-.footer .footer-links a { margin: 0 0.7rem; }
+.colophon .links {
+  font-family: var(--sans); font-size: 0.82rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
 
-/* ---------- Reveal on scroll ---------- */
+.colophon .links a {
+  color: var(--faint); text-decoration: none; margin: 0 0.9rem;
+}
+
+.colophon .links a:hover { color: var(--gold); }
+
+.colophon .copyright {
+  font-family: var(--sans); font-size: 0.8rem;
+  color: var(--faint); margin-top: 1.2rem;
+}
+
+/* ---------- Reveal ---------- */
 
 .reveal {
-  opacity: 0; transform: translateY(22px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal.is-visible { opacity: 1; transform: none; }
@@ -258,11 +330,15 @@ html.light .theme-toggle .moon { display: none; }
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 760px) {
-  .header nav a:not(.store-link) { display: none; }
-  .feature { grid-template-columns: 1fr; gap: 40px; padding: 48px 0; text-align: center; }
-  .feature:nth-child(even) .feature__media { order: 0; }
-  .feature p, .feature ul { margin-left: auto; margin-right: auto; }
-  .feature li { text-align: left; }
-  .duo .shot:last-child { margin-top: 0; }
+@media (max-width: 820px) {
+  .chapter .container,
+  .chapter.media-left .container { grid-template-columns: 1fr; gap: 48px; }
+  .chapter.media-left .chapter__media { order: 0; }
+  .chapter { text-align: center; }
+  .chapter .lead::first-letter { float: none; padding: 0; font-size: 1em; color: inherit; font-style: normal; }
+  .carte { max-width: 26rem; margin-left: auto; margin-right: auto; }
+  .numbers { padding-top: 200px; }
+  .numbers .grid { grid-template-columns: 1fr; gap: 40px; }
+  .duo .device:last-child { margin-top: 0; }
+  .masthead .issue { display: none; }
 }
